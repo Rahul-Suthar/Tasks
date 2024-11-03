@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock title %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="text-center">About Our To-Do List App</h1>
+            <p class="lead text-center">Stay organized and boost your productivity with our simple and user-friendly to-do list app.</p>
+
+            <hr>
+
+            <h3>Key Features</h3>
+            <ul class="list-group">
+                <li class="list-group-item">Add, edit, and delete tasks with ease.</li>
+                <li class="list-group-item">Mark tasks as completed and track your progress.</li>
+                <li class="list-group-item">Mobile-friendly design for managing tasks on the go.</li>
+                <li class="list-group-item">Fast and lightweight, built with Flask and SQLite.</li>
+            </ul>
+
+            <h3 class="mt-5">How It Works</h3>
+            <p>Using our to-do app is simple:</p>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item">Enter tasks with details like task title and description.</li>
+                <li class="list-group-item">Mark tasks as complete when you’re done or update them if made mistake while creating or delete them if no longer needed.</li>
+                <li class="list-group-item">Keep track of both completed and pending tasks to stay organized.</li>
+            </ol>
+
+            <h3 class="mt-5">About the Technology</h3>
+            <p>Our app is built using the Flask framework for Python, and tasks are stored using SQLite, ensuring quick and reliable performance. Bootstrap is used for a responsive design, making the app easy to use on both desktop and mobile devices.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+{% endblock body %}

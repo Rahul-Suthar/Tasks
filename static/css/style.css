@@ -1,0 +1,13 @@
+body, table, tr, th, td{
+    background-color: #365a86;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #efd6ac;
+}
+
+.navbar{
+    background-color: #364a75;
+}
+
+.container{
+    transform: translateY(5%);
+}
