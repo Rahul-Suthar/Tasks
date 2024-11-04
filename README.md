@@ -5,8 +5,6 @@ Here is my Todo Web application using popular technologies and frameworks:- flas
 ```
 --Todo_app
     |
-    |--__pycache__
-    |
     |--instance
     |    |--Todo.db
     |
@@ -42,22 +40,27 @@ python app.py
 
 To run this app in virtual env
 
-1. Create a virtual env
+1. install Virtualenv for python
 ```sh
-python -m venv <env_name>
+pip install virtualenv
 ```
 
-2. Activate the virtual env
+2. Create a virtual env
+```sh
+virtualenv <name>
+```
+
+3. Activate the virtual env
 ```sh
 .\env\Scripts\Activate
 ```
 
-3. Make sure you have downloaded packages and frameworks used in this app
+4. install all the dependencies used in app
 ```sh
-pip install Flask gunicorn SQLAlchemy
+pip install -r requirements.txt
 ```
 
-4. Now Run this app
+5. Now Run this app
 ```sh
 python app.py
 ```

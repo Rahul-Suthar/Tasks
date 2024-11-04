@@ -24,9 +24,11 @@ with app.app_context():
 @app.route('/', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
-        title = request.form['title'] 
+        title = request.form['title']
         desc = request.form['desc']
+
         todo = Todo(title=title, desc=desc)
+
         db.session.add(todo)
         db.session.commit()
 
@@ -36,7 +38,7 @@ def add():
 @app.route('/done/<int:sno>', methods = ['GET', 'POST'])
 def done(sno):
     todo = Todo.query.filter_by(sno=sno).first()
-    
+
     if todo:
         todo.done = not todo.done
         db.session.commit()
@@ -80,4 +82,4 @@ def dis(title):
     return redirect('/')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
