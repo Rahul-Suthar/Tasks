@@ -20,6 +20,13 @@ class Todo(db.Model):
 with app.app_context():
     db.create_all()
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/user')
+def user():
+    return redirect('/')
 
 @app.route('/', methods = ['GET', 'POST'])
 def add():
@@ -33,7 +40,8 @@ def add():
         db.session.commit()
 
     allTodo = Todo.query.all()
-    return render_template('index.html', allTodo=allTodo)
+    return render_template('home.html', allTodo=allTodo)
+
 
 @app.route('/done/<int:sno>', methods = ['GET', 'POST'])
 def done(sno):
@@ -77,9 +85,9 @@ def dis(title):
     if request.method == 'POST':
         title = request.form['search']
         todo = Todo.query.filter_by(title=title).all()
-        return render_template('index.html', allTodo=todo)
+        return render_template('home.html', allTodo=todo)
 
     return redirect('/')
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

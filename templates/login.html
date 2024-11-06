@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="heading">Welcome To My Tasks</h1>
+    </header>
+
+    <div class="container">
+        <div class="slider"></div>
+        <div class="btn">
+            <button class="login">Login</button>
+            <button class="signup">signup</button>
+        </div>
+
+        <form action="/login.html" method="post"></form>
+        <div class="form-section">
+            <!--Login-->
+            <div class="login-box">
+                <input type="email" class="email ele" placeholder="youremail@email.com">
+                <input type="password" class="password ele" placeholder="password">
+                <a href="/user" class="btn btn-outline-success btn-sm">Login</a>
+            </div>
+
+            <!--Signup-->
+            <div class="signup-box">
+                <input type="text" class="name ele" placeholder="Enter your name">
+                <input type="email" class="email ele" placeholder="youremail@email.com">
+                <input type="password" class="password ele" placeholder="password">
+                <input type="password" class="password ele" placeholder="confirm password">
+                <a href="/user" class="btn btn-outline-success btn-sm">Signup</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static',filename='script/login.js') }}"></script>
+</body>
+</html>

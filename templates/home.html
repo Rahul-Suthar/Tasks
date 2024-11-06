@@ -47,25 +47,26 @@
                         <td>{{todo.date_created}}</td>
                         <td>
                           <form action="/done/{{ todo.sno }}" method="POST">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="flexCheckDefault{{ todo.sno }}"
-                                {% if todo.done %}chekced{% endif %}
-                                onchange="this.form.submit()">
-                              <label class="form-check-label" for="flexCheckDefault{{ todo.sno }}">
-                                Done
-                              </label>
-                            </div>
+                              <div class="form-check form-switch">
+                                  <input
+                                      class="form-check-input"
+                                      type="checkbox"
+                                      id="flexSwitchCheckDefault{{ todo.sno }}"
+                                     {% if todo.done %} checked {% endif %}
+                                     onchange="this.form.submit()">
+                                  <label class="form-check-label" for="flexSwitchCheckDefault{{ todo.sno }}"></label>
+                              </div>
                           </form>
                         </td>
                         <td>
-                          <a href="/update/{{todo.sno}}"  class="btn btn-outline-success btn-sm mx-1 my-1">Update</button>
-                          <a href="/delete/{{todo.sno}}"  class="btn btn-outline-danger btn-sm mx-1">Delete</button>
+                          <a href="/update/{{todo.sno}}"  class="btn btn-outline-success btn-sm mx-1 my-1">Update</a>
+                          <a href="/delete/{{todo.sno}}"  class="btn btn-outline-danger btn-sm mx-1">Delete</a>
                         </td>
                     </tr>                    
                     
                     {% endfor %}
                   </tbody>
-                  </table>
+                </table>
               {% endif %}
 
               
