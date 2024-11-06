@@ -11,14 +11,17 @@ Here is my Todo Web application using popular technologies and frameworks:- flas
     |--static
     |    |--css
     |    |   |--style.css
+    |    |   |--login.css
     |    |
     |    |--script
+    |        |--login.js
     |
     |--templates
     |    |--base.html
     |    |--index.html
     |    |--update.html
     |    |--about.html
+    |    |--login.html
     |
     |--app.py
     |
