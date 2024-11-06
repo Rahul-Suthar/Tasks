@@ -6,37 +6,33 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
 </head>
 <body>
-    <header>
-        <h1 class="heading">Welcome To My Tasks</h1>
-    </header>
-
     <div class="container">
         <div class="slider"></div>
-        <div class="btn">
+        <div class="toggler">
             <button class="login">Login</button>
-            <button class="signup">signup</button>
+            <button class="signup">Sign Up</button>
         </div>
 
-        <form action="/login.html" method="post"></form>
         <div class="form-section">
-            <!--Login-->
+            <!-- Login Form -->
             <div class="login-box">
-                <input type="email" class="email ele" placeholder="youremail@email.com">
+                <input type="email" class="email ele" placeholder="Email">
                 <input type="password" class="password ele" placeholder="password">
-                <a href="/user" class="btn btn-outline-success btn-sm">Login</a>
+                <a href="/user" class="btn">Login</a>
             </div>
 
-            <!--Signup-->
+            <!-- Signup Form -->
             <div class="signup-box">
-                <input type="text" class="name ele" placeholder="Enter your name">
-                <input type="email" class="email ele" placeholder="youremail@email.com">
+                <input type="text" class="name ele" placeholder="Name">
+                <input type="email" class="email ele" placeholder="Email">
                 <input type="password" class="password ele" placeholder="password">
                 <input type="password" class="password ele" placeholder="confirm password">
-                <a href="/user" class="btn btn-outline-success btn-sm">Signup</a>
+                <a href="/user" class="btn">Sign Up</a>
             </div>
         </div>
     </div>
 
+    <script src="https://unpkg.com/@barba/core"></script>
     <script src="{{ url_for('static',filename='script/login.js') }}"></script>
 </body>
 </html>

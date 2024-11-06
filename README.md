@@ -15,10 +15,11 @@ Here is my Todo Web application using popular technologies and frameworks:- flas
     |    |
     |    |--script
     |        |--login.js
+    |        |--script.js
     |
     |--templates
     |    |--base.html
-    |    |--index.html
+    |    |--home.html
     |    |--update.html
     |    |--about.html
     |    |--login.html
