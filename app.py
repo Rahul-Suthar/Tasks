@@ -20,12 +20,16 @@ class Todo(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route('/login')
-def login():
+@app.route('/register')
+def register():
     return render_template('login.html')
 
-@app.route('/user')
-def user():
+@app.route('/login')
+def login():
+    return redirect('/')
+
+@app.route('/signup')
+def signup():
     return redirect('/')
 
 @app.route('/', methods = ['GET', 'POST'])
@@ -90,4 +94,4 @@ def dis(title):
     return redirect('/')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000,debug=True)
