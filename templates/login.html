@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
 </head>
 <body>
+   
     <div class="container">
+        <!-- Toggler to switch -->
         <div class="toggler">
             <div class="slider"></div>
             <button class="login">Login</button>
@@ -16,21 +18,37 @@
         <div class="form-section">
             <!-- Login Form -->
             <div class="login-box">
-                <input type="email" class="email ele" placeholder="Email">
-                <input type="password" class="password ele" placeholder="password">
-                <a href="/login" class="btn">Login</a>
+                <form action="/login" method="POST">
+                    <input type="email" class="email ele" name="email" placeholder="email" required>
+                    <input type="password" class="password ele" name="password" placeholder="password" required>
+                    <button type="submit" class="lbtn">Login</button>
+                </form>
             </div>
 
             <!-- Signup Form -->
             <div class="signup-box">
-                <input type="text" class="name ele" placeholder="Name">
-                <input type="email" class="email ele" placeholder="Email">
-                <input type="password" class="password ele" placeholder="password">
-                <input type="password" class="password ele" placeholder="confirm password">
-                <a href="/signup" class="btn">Sign Up</a>
+                <form action="/register" method="POST">
+                    <input type="text" class="username ele" name="username" placeholder="username" required>
+                    <input type="email" class="email ele" name="email" placeholder="email" required>
+                    <input type="password" class="password ele" name="password" placeholder="password" required>
+                    <button type="submit" class="lbtn">Register</button>
+                </form>
             </div>
         </div>
     </div>
+
+
+    <!-- Flash message -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <div class="flash-message-container">
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
 
     <script src="https://unpkg.com/@barba/core"></script>
     <script src="{{ url_for('static',filename='script/login.js') }}"></script>

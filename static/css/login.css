@@ -11,19 +11,37 @@ body {
     height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: #365a86;
 }
 
+.flash-message {
+    text-align: center;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #ffffff;
+    width: fit-content;
+}
+
+.flash-message.success {
+    background-color: #28a745;
+}
+
+.flash-message.error {
+    background-color: #dc3545;
+}
+
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 500px;
     background-color: #0077b6;
     box-shadow: 8px 8px 20px black;
     border-radius: 15px;
-    position: relative;
     overflow: hidden;
+    margin: auto;
+    position: relative;
 }
 
 .toggler {
@@ -63,13 +81,20 @@ body {
     background-color: transparent;
     cursor: pointer;
     z-index: 2; /* Makes buttons clickable above the slider */
+    padding: 10px 0;
+    color: #ffffff;
+}
+
+.login:hover,
+.signup:hover {
+    color: #003049;
 }
 
 .form-section {
     display: flex;
+    align-items: center;
     transition: transform 0.5s ease-in-out;
     width: 200%;
-    transform: translateX(0%);
 }
 
 .form-section-move {
@@ -78,34 +103,35 @@ body {
 
 .login-box,
 .signup-box {
-    width: 50%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
-}
-
-.login-box {
-    gap: 40px;
-}
-
-.signup-box {
-    gap: 20px;
+    padding: 1px 8%;
 }
 
 .ele {
     height: 50px;
-    width: 80%;
+    width: 100%;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     border-radius: 50px;
     background-color: rgb(240, 240, 240);
+    margin: 10px;
+    transform: translateX(-10px);
+    transition: border-color 0.3s ease;
 }
 
-.btn {
+.ele:focus {
+    border-color: #b000d8;
+    outline: none;
+}
+
+.lbtn {
+    margin: 5% 25%;
     height: 40px;
-    width: 80%;
+    width: 50%;
     background-color: #94d2bd;
     color: #01161e;
     font-size: 16px;
@@ -116,9 +142,32 @@ body {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.btn:hover {
+.lbtn:hover {
     background-color: #00b4d8;
     transform: translateY(-2px);
+}
+
+lbtn:active {
+    background-color: #00b4d8;
+    transform: translateY(1px);
+}
+
+.flash-message {
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px auto;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #ffffff;
+    width: fit-content;
+}
+
+.flash-message.success {
+    background-color: #28a745;
+}
+
+.flash-message.error {
+    background-color: #dc3545;
 }
 
 /* Responsive Design */
@@ -138,7 +187,7 @@ body {
         font-size: 14px;
     }
 
-    .btn {
+    .lbtn {
         font-size: 14px;
     }
 }
