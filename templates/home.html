@@ -40,7 +40,7 @@
         </thead>
         <tbody>
           {% for todo in allTodo %}
-            <tr class="{% if todo.done %}table-success{% endif %}">
+            <tr class="{% if todo.done %} {% endif %}">
                 <th scope="row">{{ loop.index }}</th>
                 <td>{{ todo.title }}</td>
                 <td>{{ todo.desc }}</td>

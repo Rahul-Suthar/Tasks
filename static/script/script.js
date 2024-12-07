@@ -15,3 +15,10 @@ barba.init({
     }
   }]
 });
+
+
+$(document).ready(function() {
+  $(".close-btn").click(function() {
+      $(this).closest(".flash-message").fadeOut();
+  });
+});

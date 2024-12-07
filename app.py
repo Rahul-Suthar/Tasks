@@ -116,6 +116,8 @@ def update(sno):
     if request.method == 'POST':
         title = request.form['title']
         desc = request.form['desc']
+        todo.title = title
+        todo.desc = desc
         db.session.commit()
         flash('Task updated successfully', 'success')
         return redirect(url_for('add'))
