@@ -15,7 +15,7 @@ Here is my Todo Web application using popular technologies and frameworks:- flas
     |    |
     |    |--script
     |    |   |--login.js
-    |    |    |--script.js
+    |    |   |--script.js
     |    |
     |    |--icons
     |         |--male.png
