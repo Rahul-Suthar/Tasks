@@ -29,7 +29,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(100), nullable=False)
 
 
-class Todo(db.Model):
+class Task(db.Model):
     sno = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(200), nullable = False)
     desc = db.Column(db.String(500), nullable = False)
@@ -41,8 +41,6 @@ class Todo(db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -97,39 +95,41 @@ def add():
         desc = request.form['desc']
 
         if title.strip():
-            todo = Todo(title=title, desc=desc, user_id=current_user.id)
-            db.session.add(todo)
+            new_task = Task(title=title, desc=desc, user_id=current_user.id)
+            db.session.add(new_task)
             db.session.commit()
             flash('Task added successfully', 'success')
         else:
             flash('Title cannot be empty', 'error')
 
-    allTodo = Todo.query.filter_by(user_id=current_user.id).all()
-    return render_template('home.html', allTodo=allTodo)
+        return redirect(url_for('add'))
+
+    allTask = Task.query.filter_by(user_id=current_user.id).all()
+    return render_template('home.html',allTask=allTask)
 
 
 @app.route('/update/<int:sno>', methods = ['GET', 'POST'])
 @login_required
 def update(sno):
-    todo = Todo.query.filter_by(sno=sno, user_id=current_user.id).first_or_404()
+    task = Task.query.filter_by(sno=sno, user_id=current_user.id).first_or_404()
 
     if request.method == 'POST':
         title = request.form['title']
         desc = request.form['desc']
-        todo.title = title
-        todo.desc = desc
+        task.title = title
+        task.desc = desc
         db.session.commit()
         flash('Task updated successfully', 'success')
         return redirect(url_for('add'))
 
-    return render_template('update.html',todo=todo)
+    return render_template('update.html',task=task)
 
 
 @app.route('/delete/<int:sno>')
 @login_required
 def delete(sno):
-    todo = Todo.query.filter_by(sno=sno, user_id=current_user.id).first_or_404()
-    db.session.delete(todo)
+    task = Task.query.filter_by(sno=sno, user_id=current_user.id).first_or_404()
+    db.session.delete(task)
     db.session.commit()
     flash('Task deleted successfully', 'success')
     return redirect(url_for('add'))
@@ -138,8 +138,8 @@ def delete(sno):
 @app.route('/done/<int:sno>', methods = ['GET', 'POST'])
 @login_required
 def mark_done(sno):
-    todo = Todo.query.filter_by(sno=sno, user_id=current_user.id).first_or_404()
-    todo.done = not todo.done
+    task = Task.query.filter_by(sno=sno, user_id=current_user.id).first_or_404()
+    task.done = not task.done
     db.session.commit()
     return redirect(url_for('add'))
 
@@ -155,8 +155,8 @@ def search():
     if not title:
         flash('Search term cannot be empty', 'error')
         return redirect(url_for('add'))
-    results = Todo.query.filter(Todo.title.contains(title), Todo.user_id == current_user.id).all()
-    return render_template('home.html', allTodo=results, search_term=title)
+    results = Task.query.filter(Task.title.contains(title), Task.user_id == current_user.id).all()
+    return render_template('home.html', allTask=results, search_term=title)
 
 
 @app.errorhandler(404)
@@ -170,4 +170,4 @@ if __name__ == '__main__':
         print("Database created successfully!")
 
     # Start the app
-    app.run(debug=True)
+    app.run(debug=False)

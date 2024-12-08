@@ -3,10 +3,10 @@ Here is my Todo Web application using popular technologies and frameworks:- flas
 
 ## Folder Structure
 ```
---Todo_app
+--Tasks_app
     |
     |--instance
-    |    |--Todo.db
+    |    |--Tasks.db
     |
     |--static
     |    |--css

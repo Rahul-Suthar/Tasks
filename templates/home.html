@@ -3,7 +3,7 @@
 
 {% block body %}  
 <div class="container">
-  <h2>Add Todo</h2>
+  <h2>Add Tasks</h2>
   <form action="/" method="POST">
       <div class="mb-3">
         <label for="title" class="form-label">Task title</label>
@@ -22,7 +22,7 @@
     {% if search_term %}
         <p>Showing results for: "{{ search_term }}"</p>
     {% endif %}
-    {% if allTodo|length == 0 %}
+    {% if allTask|length == 0 %}
         <div class="alert alert-dark" role="alert">
           No records found. Add your first Task now!
         </div>
@@ -39,23 +39,23 @@
           </tr>
         </thead>
         <tbody>
-          {% for todo in allTodo %}
-            <tr class="{% if todo.done %} {% endif %}">
+          {% for task in allTask %}
+            <tr class="{% if task.done %} {% endif %}">
                 <th scope="row">{{ loop.index }}</th>
-                <td>{{ todo.title }}</td>
-                <td>{{ todo.desc }}</td>
-                <td>{{ todo.date_created }}</td>
+                <td>{{ task.title }}</td>
+                <td>{{ task.desc }}</td>
+                <td>{{ task.date_created }}</td>
                 <td>
-                  <form action="/done/{{ todo.sno }}" method="POST">
+                  <form action="/done/{{ task.sno }}" method="POST">
                       <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault{{ todo.sno }}" {% if todo.done %}checked{% endif %} onchange="this.form.submit()">
-                          <label class="form-check-label" for="flexSwitchCheckDefault{{ todo.sno }}"></label>
+                          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault{{ task.sno }}" {% if task.done %}checked{% endif %} onchange="this.form.submit()">
+                          <label class="form-check-label" for="flexSwitchCheckDefault{{ task.sno }}"></label>
                       </div>
                   </form>
                 </td>
                 <td>
-                  <a href="/update/{{ todo.sno }}" class="btn btn-outline-success btn-sm mx-1 my-1">Update</a>
-                  <a href="/delete/{{ todo.sno }}" class="btn btn-outline-danger btn-sm mx-1">Delete</a>
+                  <a href="/update/{{ task.sno }}" class="btn btn-outline-success btn-sm mx-1 my-1">Update</a>
+                  <a href="/delete/{{ task.sno }}" class="btn btn-outline-danger btn-sm mx-1">Delete</a>
                 </td>
             </tr>                    
           {% endfor %}
